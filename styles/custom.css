@@ -1,0 +1,75 @@
+:root {
+    --primary: #3871b6;
+    --secondary: #485b6c;
+    --hover: #1d61b5;
+}
+
+.btn {
+    padding: 0.4rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background-color: var(--hover);
+    border-color: var(--hover);
+}
+.btn-primary.disabled,
+.btn-primary:disabled {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline {
+    background: white;
+}
+.btn-outline.btn-primary {
+    color: var(--primary);
+}
+.btn-outline.btn-danger {
+    color: var(--danger);
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.container-hero {
+    max-width: 1000px;
+}
+
+@media (min-width: 1300px) {
+    .container-hero {
+        max-width: 75%;
+    }
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+/* To remove autofill input background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/* To remove arrows from number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.text-small {
+    font-size: 0.8rem;
+}

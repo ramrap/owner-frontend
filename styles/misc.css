@@ -1,0 +1,4 @@
+.drawer__content__content {
+    padding: 0 !important;
+    max-height: calc(90vh - 25px) !important;
+}
