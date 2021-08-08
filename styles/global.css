@@ -31,6 +31,10 @@ h6 {
     font-weight: 700;
 }
 
+hr {
+    margin: 0;
+}
+
 .bg-primary-light {
     background-color: #f3f8ff;
 }
@@ -53,4 +57,10 @@ h6 {
 
 .font-tokyo {
     font-family: "Tokyo Outline";
+}
+
+.item-shadow {
+    border-radius: 8px;
+    background: white;
+    box-shadow: -8px 9px 32px rgba(136, 136, 136, 0.16);
 }

@@ -8,7 +8,7 @@ const baseURL = {
 };
 
 const axiosInstance = axios.create({
-    baseURL: baseURL.testing,
+    baseURL: baseURL.local,
     timeout: 25000,
     headers: {
         Authorization: cookie.load("access_token") ? `Bearer ${cookie.load("access_token")}` : "",

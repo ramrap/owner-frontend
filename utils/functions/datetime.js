@@ -58,3 +58,8 @@ export function datetimeToAMPM(date) {
     var strTime = hours + ':' + minutes + ' ' + ampm;
     return strTime;
 }
+
+export function datetimeDiffInMins(date1, date2){
+    var diff = Math.abs(date1.getTime() - date2.getTime());
+    return Math.round(diff/60000);
+}
