@@ -64,3 +64,11 @@ hr {
     background: white;
     box-shadow: -8px 9px 32px rgba(136, 136, 136, 0.16);
 }
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

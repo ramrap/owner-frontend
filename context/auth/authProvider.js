@@ -12,48 +12,35 @@ export default function AuthProvider(props) {
     const [loading, setLoading] = React.useState(false);
 
     const [loginError, setLoginError] = React.useState();
-    const [socialLoginError, setSocialLoginError] = React.useState();
-
-    const [authDrawer, setAuthDrawer] = React.useState(false);
-    const [callback, setCallback] = React.useState();
 
     React.useEffect(() => {
         // console.log("access: ", access);
         // console.log("refresh: ", refresh);
     }, []);
 
-    const sendOtpPromise = (phone) =>
-        axiosInstance.post("/consumer/login/sendOTP/", {
-            phone: phone,
-        });
-    const checkOtpPromise = (phone, otp) =>
-        axiosInstance.post("/consumer/login/checkOTP/", {
-            phone: phone,
-            otp: otp,
-        });
-
-    const handleAuthDrawer = (value, callback) => {
-        setAuthDrawer(value);
-        setCallback(callback);
-    };
-
     const login = (data) => {
         setLoading(true);
         setLoginError("");
-        setSocialLoginError("");
         console.log("login data: ", data);
 
-        setAccessToken(data.access);
-        setRefreshToken(data.refresh);
-
-        axiosInstance.defaults.headers["Authorization"] = "Bearer " + data.access;
-
-        if (callback) {
-            callback();
-        }
-
-        setAuthDrawer(false);
-        setLoading(false);
+        axiosInstance
+            .post("/store-owner/login/", {
+                email: data.email,
+                password: data.password,
+            })
+            .then((response) => {
+                console.log(response.data);
+                setAccessToken(response.data.access);
+                setRefreshToken(response.data.refresh);
+                axiosInstance.defaults.headers["Authorization"] = "Bearer " + response.data.access;
+                setLoading(false);
+            })
+            .catch((error) => {
+                setLoading(false);
+                console.log(error);
+                console.log(error.response);
+                setLoginError(error.response && error.response.data && error.response.data.detail);
+            });
     };
 
     const setAccessToken = (token) => {
@@ -67,7 +54,7 @@ export default function AuthProvider(props) {
         console.log("set refresh: ", token);
     };
 
-    const logout = (callback) => {
+    const logout = () => {
         console.log("signing out");
 
         cookie.remove(COOKIE_NAME_ACCESS_TOKEN, { path: "/" });
@@ -82,9 +69,7 @@ export default function AuthProvider(props) {
 
         setLoading(false);
         setLoginError("");
-        setSocialLoginError("");
 
-        if (callback) callback();
     };
 
     return (
@@ -96,15 +81,8 @@ export default function AuthProvider(props) {
 
                 loading,
 
-                // Auth drawer
-                authDrawer,
-                setAuthDrawer: handleAuthDrawer,
-
                 // Auth
-                sendOtpPromise,
-                checkOtpPromise,
                 loginError,
-                socialLoginError,
                 login,
                 logout,
             }}

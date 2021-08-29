@@ -6,7 +6,6 @@ import "@styles/global.css";
 import "@styles/custom.css";
 
 import "@styles/flickity.css";
-import "@styles/misc.css";
 
 import { PageTransition } from "next-page-transitions";
 import AuthProvider from "context/auth/authProvider";

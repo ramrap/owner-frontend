@@ -22,6 +22,9 @@
     background-color: var(--primary);
     border-color: var(--primary);
 }
+.btn-white {
+    border: 1px solid #fff;
+}
 
 .btn-outline {
     background: white;
@@ -31,6 +34,10 @@
 }
 .btn-outline.btn-danger {
     color: var(--danger);
+}
+.btn-outline.btn-white {
+    color: var(--white);
+    background-color: transparent;
 }
 
 .text-primary {
@@ -72,4 +79,22 @@ input[type="number"] {
 
 .text-small {
     font-size: 0.8rem;
+}
+
+input.form-control {
+    border: 1px solid var(--primary);
+    height: auto;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+}
+textarea.form-control {
+    border: 1px solid var(--primary);
+    height: auto;
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+}
+
+.borderless td,
+.borderless th {
+    border: none;
 }
