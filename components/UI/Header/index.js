@@ -1,17 +1,13 @@
 import { useAuth } from "@context/auth/authContext";
 import Link from "next/dist/client/link";
-export default function Header() {
+export default function Header({ heading }) {
     const { logout } = useAuth()
     return (
         <>
             <div className="container p-3">
                 <div className="d-flex justify-content-between">
                     <div>
-                        <Link href="/">
-                            <a>
-                                <img src={"/logo.svg"} alt="logo" />
-                            </a>
-                        </Link>
+                        <h3>{heading}</h3>
                     </div>
                     <div>
                         <div className="font-weight-bold text-primary cursor-pointer" onClick={logout}>

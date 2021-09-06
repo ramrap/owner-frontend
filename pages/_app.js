@@ -10,6 +10,7 @@ import "@styles/flickity.css";
 import { PageTransition } from "next-page-transitions";
 import AuthProvider from "context/auth/authProvider";
 import SessionProvider from "context/session/sessionProvider";
+import Layout from "@components/UI/Layout";
 
 function MyApp({ Component, pageProps, router }) {
     return (
@@ -17,13 +18,17 @@ function MyApp({ Component, pageProps, router }) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <PageTransition timeout={300} classNames="page-transition">
-                <SessionProvider>
-                    <AuthProvider>
-                        <Component {...pageProps} key={router.route} />
-                    </AuthProvider>
-                </SessionProvider>
-            </PageTransition>
+            <Layout>
+                <PageTransition timeout={300} classNames="page-transition">
+                    <SessionProvider>
+                        <AuthProvider>
+                            
+                                <Component {...pageProps} key={router.route} />
+                        
+                        </AuthProvider>
+                    </SessionProvider>
+                </PageTransition>
+            </Layout>
             <style jsx global>{`
                 .page-transition-enter {
                     opacity: 0;

@@ -4,6 +4,7 @@ import { datetimeDiffInMins, datetimeToAMPM } from "@utils/functions/datetime"
 import React from "react"
 import Rupee from "@utils/symbols/rupee"
 import PrivateRoute from "@components/PrivateRoute"
+import Header from "@components/UI/Header"
 
 export default function Home() {
     const [bookings, setBookings] = React.useState()
@@ -75,9 +76,10 @@ export default function Home() {
         "vehicle_type": 1
       }
     React.useEffect(() => {
-        setBookings([booking, booking, booking])
+        // setBookings([booking, booking, booking])
         axiosInstance.get("/booking/list/owner")
             .then((response) => {
+                console.log(response.data.results)
                 setBookings(response.data.results)
             })
             .catch((error) => {
@@ -87,13 +89,13 @@ export default function Home() {
     }, [])
     return (
         <PrivateRoute>
-            <Layout>
-                <h1>Upcoming Orders</h1>
+            <>
+                <Header heading="Upcoming Orders" />
                 <div className="row no-gutters">
                     {bookings && bookings.map((booking) =>
                         <div className="col-12 col-md-6 p-2 p-md-3" key={booking.booking_id}>
-                            <div className="item-shadow">
-                                <div className="p-2 d-flex flex-wrap justify-content-between">
+                            <div className="item-shadow p-2">
+                                <div className="p-2 d-flex flex-wrap justify-content-between text-primary font-weight-bold">
                                     <div className="">
                                         <span className="text-muted">ORDER ID:</span> {booking.booking_id}
                                     </div>
@@ -108,15 +110,15 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <hr />
-                                <div className="p-2">
+                                <div className="p-2 font-weight-bold">
                                     <div className="">
-                                        <span className="text-muted">Order Details:</span> {booking.price_times.map((price_time, index) => <span className="font-weight-bold">{index != 0 && ','} {price_time.service} </span>)}
+                                        <span className="text-muted">Order Details:</span> {booking.price_times.map((price_time, index) => <span className="font-weight-bold" key={price_time.id}>{index != 0 && ','} {price_time.service} </span>)}
                                     </div>
                                     <div className="">
                                         <span className="text-muted">Total Time:</span> {datetimeDiffInMins(new Date(booking.event.start_datetime), new Date(booking.event.end_datetime))}min
                                     </div>
                                     <div className="">
-                                        <span className="text-muted">Vehicle Type:</span> aabhi dekhte iska thoda
+                                        <span className="text-muted">Vehicle Type:</span> {booking.vehicle_type}
                                     </div>
                                     <div className="d-flex justify-content-between">
                                         <div className="">
@@ -130,9 +132,9 @@ export default function Home() {
                                 <hr />
                                 <div className="p-2">
                                     <div className="d-flex justify-content-between p-2">
-                                        <div className="btn btn-primary btn-outline bg-primary-light">
+                                        <button className="btn border bg-primary-light" disabled>
                                             {datetimeToAMPM(new Date(booking.event.start_datetime))} to {datetimeToAMPM(new Date(booking.event.end_datetime))}
-                                        </div>
+                                        </button>
                                         <div className="btn btn-primary btn-outline">
                                             View All Details
                                         </div>
@@ -151,7 +153,7 @@ export default function Home() {
                         </div>
                     )}
                 </div>
-            </Layout>
+            </>
             <style jsx>{`
                 
             `}</style>
