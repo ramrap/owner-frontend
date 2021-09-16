@@ -28,7 +28,7 @@ export default function Login() {
             <Header />
             <div className="outer-container">
                 <div className="form-box w-100 p-3">
-                    <h4 className="text-primary mb-4">Salesman Login</h4>
+                    <h4 className="text-primary mb-4">Owner Login</h4>
                     <form onSubmit={handleLogin}>
                         <div className="form-group">
                             <Input label="Email Address" value={email} onChange={setEmail} type="email" required />

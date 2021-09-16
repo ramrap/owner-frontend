@@ -84,13 +84,13 @@ input[type="number"] {
 input.form-control {
     border: 1px solid var(--primary);
     height: auto;
-    padding: 0.9rem 1rem;
+    padding: 0.6rem 0.8rem;
     font-size: 0.9rem;
 }
 textarea.form-control {
     border: 1px solid var(--primary);
     height: auto;
-    padding: 0.9rem 1rem;
+    padding: 0.6rem 0.8rem;
     font-size: 0.9rem;
 }
 

@@ -18,17 +18,19 @@ function MyApp({ Component, pageProps, router }) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
-            <Layout>
-                <PageTransition timeout={300} classNames="page-transition">
-                    <SessionProvider>
-                        <AuthProvider>
-                            
-                                <Component {...pageProps} key={router.route} />
+            <PageTransition timeout={300} classNames="page-transition">
+            <SessionProvider>
+                <AuthProvider>
+                
+                    <Layout>
                         
-                        </AuthProvider>
-                    </SessionProvider>
-                </PageTransition>
-            </Layout>
+                            <Component {...pageProps} key={router.route} />
+                        
+                    </Layout>
+                    
+                </AuthProvider>
+            </SessionProvider>
+            </PageTransition>
             <style jsx global>{`
                 .page-transition-enter {
                     opacity: 0;
