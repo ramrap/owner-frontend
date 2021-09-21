@@ -63,3 +63,7 @@ export function datetimeDiffInMins(date1, date2){
     var diff = Math.abs(date1.getTime() - date2.getTime());
     return Math.round(diff/60000);
 }
+
+export const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+    ];

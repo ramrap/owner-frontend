@@ -8,9 +8,21 @@ const SIDEBAR_ITEMS = [
         icon: null
     },
     {
-        key: "upcoming_orders",
-        title: "Upcoming Orders",
-        path: '/upcoming_orders',
+        key: "todays_orders",
+        title: "Today's Orders",
+        path: '/todays_orders',
+        icon: null
+    },
+    {
+        key: "new_orders",
+        title: "New orders",
+        path: "/new_orders",
+        icon: null
+    },
+    {
+        key: "past_orders",
+        title: "Past orders",
+        path: "/past_orders",
         icon: null
     },
 ]

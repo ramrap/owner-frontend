@@ -72,13 +72,13 @@ export default function Home() {
     return (
         <PrivateRoute>
             <>
-                <Header heading="Upcoming Orders" />
+                <Header heading="Today's Orders" />
                 <div className="row no-gutters">
                     {bookings && bookings.map((booking) => {
                         var event = booking.event || {}
                         var payment = booking.payment || {}
                         return (
-                            <div className="col-12 col-md-6 p-2 p-md-3" key={booking.booking_id}>
+                            <div className="col-12 mb-3" key={booking.booking_id}>
                                 <div className="item-shadow p-2">
                                     <div className="p-2 d-flex flex-wrap justify-content-between text-primary font-weight-bold">
                                         <div className="">
@@ -123,17 +123,17 @@ export default function Home() {
                                             <div className="btn btn-primary btn-outline">
                                                 View All Details
                                             </div>
-                                        </div>
-                                        {booking.status === BOOKING_STATUS.PAYMENT_DONE && 
-                                            <>
+
+                                        {booking.status === BOOKING_STATUS.PAYMENT_DONE &&
+                                            <div>
                                                 {error && error[booking.booking_id] && <div className="text-danger">{error[booking.booking_id]}</div>}
                                                 <div className="d-flex p-2">
-                                                    <input value={otps[booking.booking_id]} onChange={(event) => setOtps({...otps, [booking.booking_id]: event.target.value})} className="form-control w-auto mr-2" type="number" />
+                                                    <input value={otps[booking.booking_id]} onChange={(event) => setOtps({...otps, [booking.booking_id]: event.target.value})} className="form-control w-auto mr-2" type="text" />
                                                     <div className="btn btn-primary" onClick={() => startBooking(booking.booking_id)}>Start Service</div>
                                                 </div>
-                                            </>
+                                            </div>
                                         }
-                                        {booking.status === BOOKING_STATUS.SERVICE_STARTED && 
+                                        {booking.status === BOOKING_STATUS.SERVICE_STARTED &&
                                             <div className="d-flex justify-content-between p-2">
                                                 <div className="btn border">
                                                     Ongoing
@@ -148,11 +148,12 @@ export default function Home() {
                                                 Service Completed
                                             </div>
                                         }
-                                        {booking.status === BOOKING_STATUS.NOT_ATTENDED && 
+                                        {booking.status === BOOKING_STATUS.NOT_ATTENDED &&
                                             <div className="d-flex justify-content-between p-2 text-warning">
                                                 Service Expired
                                             </div>
                                         }
+                                        </div>
                                     </div>
                                     
                                 </div>

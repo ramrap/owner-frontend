@@ -25,31 +25,31 @@ export default function Home() {
     return (
         <PrivateRoute>
             <>
-                <Header heading="Upcoming Orders" />
+                <Header heading="Dashboard" />
                 <div className="row no-gutters">
                     <div className="row no-gutters col-12 col-md-12 col-lg-7">
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
                                 <h6>New Orders</h6>
-                                <h5 className="text-primary">24</h5>
+                                <h5 className="text-primary">69</h5>
                             </div>
                         </div>
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
                                 <h6>New Orders</h6>
-                                <h5>24</h5>
+                                <h5>69</h5>
                             </div>
                         </div>
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
                                 <h6>New Orders</h6>
-                                <h5>24</h5>
+                                <h5>69</h5>
                             </div>
                         </div>
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
                                 <h6>New Orders</h6>
-                                <h5>24</h5>
+                                <h5>69</h5>
                             </div>
                         </div>
 
@@ -100,5 +100,5 @@ export default function Home() {
                 
             `}</style>
         </PrivateRoute>
-    )
+    );
 }

@@ -5,7 +5,7 @@ import { SessionContext } from "@context/session/sessionContext";
 import { COOKIE_NAME_CITY } from "@utils/constants/session";
 
 export default function SessionProvider(props) {
-    const [location, setLocation] = React.useState("462001");
+    const [location, setLocation] = React.useState("bpl");
     const [city, setCity] = React.useState(cookie.load(COOKIE_NAME_CITY));
 
     const [cityDrawer, setCityDrawer] = React.useState(false);
