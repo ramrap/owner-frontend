@@ -13,7 +13,7 @@ export default function Home() {
     const [error, setError] = React.useState(null)
 
     const getBookings = () => {
-        axiosInstance.get("/owner/booking/list")
+        axiosInstance.get("store-owner/past/bookings")
             .then((response) => {
                 console.log(response.data.results)
                 setBookings(response.data.results)
@@ -27,23 +27,6 @@ export default function Home() {
     React.useEffect(() => {
         getBookings()
     }, [])
-
-    const dayBookings = (date) => {
-        setError({...error, [date]: ""})
-        axiosInstance.post("owner/bookings/date/", {
-            date: date,
-        })
-        .then((response) => {
-            console.log(response)
-            setBookings(response)
-        })
-        .catch((error) => {
-            console.log(error.response)
-            if(error.response && error.response.data){
-                setError({...error, [date]: error.response.data.error})
-            }
-        })
-    }
 
 
 

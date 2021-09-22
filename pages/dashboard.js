@@ -19,27 +19,28 @@ export default function Home() {
             .then((response) => {
                 console.log(response.data.results)
                 setBookings(response.data.results)
+                var new_order = 0;
+                var completed_orders = 0;
+                var cancelled_orders = 0;
+                var booking = bookings;
+                console.log(bookings)
+                for(var i =0;i<booking.length;i++) {
+                    if(booking[i].status === BOOKING_STATUS.PAYMENT_DONE) {
+                        new_order+=1;
+                    } else if (booking[i].status === BOOKING_STATUS.SERVICE_CONMPLETED) {
+                        completed_orders+=1;
+                    } else if (booking[i].status === BOOKING_STATUS.NOT_ATTENDED) {
+                        cancelled_orders+=1;
+                    }
+                    setNewOrders(new_order);
+                    setCompletedOrders(completed_orders);
+                    setCancelledOrders(cancelled_orders);
+        }
             })
             .catch((error) => {
                 console.log(error)
                 console.log(error.response)
             })
-        var new_order = 0;
-        var completed_orders = 0;
-        var cancelled_orders = 0;
-        var booking = bookings;
-        for(var i =0;i<booking.length;i++) {
-            if(booking[i].status === BOOKING_STATUS.PAYMENT_DONE) {
-                new_order+=1;
-            } else if (booking[i].status === BOOKING_STATUS.SERVICE_CONMPLETED) {
-                completed_orders+=1;
-            } else if (booking[i].status === BOOKING_STATUS.NOT_ATTENDED) {
-                cancelled_orders+=1;
-            }
-            setNewOrders(new_order);
-            setCompletedOrders(completed_orders);
-            setCancelledOrders(cancelled_orders);
-        }
     }
 
     React.useEffect(() => {
