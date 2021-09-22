@@ -7,12 +7,15 @@ import PrivateRoute from "@components/PrivateRoute"
 import Header from "@components/UI/Header"
 import VehicleBreakoutChart from "@components/Dashboard/VehicleBreakoutChart"
 import TotalRevenueChart from "@components/Dashboard/TotalRevenueChart"
+import { BOOKING_STATUS } from "@utils/constants/booking";
 
 export default function Home() {
-    const [bookings, setBookings] = React.useState()
-    React.useEffect(() => {
-        // setBookings([booking, booking, booking])
-        axiosInstance.get("/booking/list/owner")
+    const [bookings, setBookings] = React.useState();
+    const [newOrders, setNewOrders] = React.useState(0);
+    const [completedOrders, setCompletedOrders] = React.useState(0);
+    const [cancelledOrders, setCancelledOrders] = React.useState(0);
+    const getBookings= () => {
+        axiosInstance.get("/owner/booking/list")
             .then((response) => {
                 console.log(response.data.results)
                 setBookings(response.data.results)
@@ -21,7 +24,30 @@ export default function Home() {
                 console.log(error)
                 console.log(error.response)
             })
+        var new_order = 0;
+        var completed_orders = 0;
+        var cancelled_orders = 0;
+        var booking = bookings;
+        for(var i =0;i<booking.length;i++) {
+            if(booking[i].status === BOOKING_STATUS.PAYMENT_DONE) {
+                new_order+=1;
+            } else if (booking[i].status === BOOKING_STATUS.SERVICE_CONMPLETED) {
+                completed_orders+=1;
+            } else if (booking[i].status === BOOKING_STATUS.NOT_ATTENDED) {
+                cancelled_orders+=1;
+            }
+            setNewOrders(new_order);
+            setCompletedOrders(completed_orders);
+            setCancelledOrders(cancelled_orders);
+        }
+    }
+
+    React.useEffect(() => {
+        // setBookings([booking, booking, booking])
+        getBookings();
     }, [])
+
+
     return (
         <PrivateRoute>
             <>
@@ -31,25 +57,19 @@ export default function Home() {
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
                                 <h6>New Orders</h6>
-                                <h5 className="text-primary">69</h5>
+                                <h5 className="text-primary">{newOrders}</h5>
                             </div>
                         </div>
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
-                                <h6>New Orders</h6>
-                                <h5>69</h5>
+                                <h6>Completed</h6>
+                                <h5>{completedOrders}</h5>
                             </div>
                         </div>
                         <div className="col-6 col-md-3 p-2 p-md-3">
                             <div className="item-shadow p-2 p-md-3">
-                                <h6>New Orders</h6>
-                                <h5>69</h5>
-                            </div>
-                        </div>
-                        <div className="col-6 col-md-3 p-2 p-md-3">
-                            <div className="item-shadow p-2 p-md-3">
-                                <h6>New Orders</h6>
-                                <h5>69</h5>
+                                <h6>Cancelled</h6>
+                                <h5>{cancelledOrders}</h5>
                             </div>
                         </div>
 
