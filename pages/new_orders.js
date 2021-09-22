@@ -1,6 +1,6 @@
 import Layout from "@components/UI/Layout";
 import axiosInstance from "@utils/axios";
-import { datetimeToAMPM, datetimeToDateString, datetimeToWeekdayString, monthNames } from "@utils/functions/datetime";
+import { datetimeToAMPM, datetimeToDateString, datetimeToWeekdayString, monthNames} from "@utils/functions/datetime";
 import React from "react";
 import Rupee from "@utils/symbols/rupee";
 import PrivateRoute from "@components/PrivateRoute";
@@ -15,10 +15,10 @@ export default function Home() {
 
     const getBookings = () => {
         setAllOrders(true);
-        axiosInstance.get("/owner/booking/list")
+        axiosInstance.get("/store-owner/new/bookings")
             .then((response) => {
-                console.log(response.data.results)
-                setBookings(response.data.results)
+                console.log(response.data)
+                setBookings(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -33,12 +33,13 @@ export default function Home() {
     const getDateBookings = (date) => {
         setAllOrders(false);
         setDatetime(date);
-        axiosInstance.post("", {
-            date: date
+        console.log(date.toISOString().split('T')[0])
+        axiosInstance.post("/store-owner/new/bookings/", {
+            date: date.toISOString().split('T')[0]
         })
             .then((response) => {
-                console.log(response.data.results)
-                setBookings(response.data.results)
+                console.log(response.data)
+                setBookings(response.data)
             })
             .catch((error) => {
                 console.log(error)
