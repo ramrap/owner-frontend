@@ -52,6 +52,7 @@ export default function Home() {
                         var booking_date = new Date(booking.event.start_datetime);
                         var order = "";
                         var price_times = booking.price_times;
+                        var amount = parseInt(booking.amount);
                         {price_times && price_times.map((price_time) => {
                             order = order + price_time.service + "+";
                         })}
@@ -60,10 +61,10 @@ export default function Home() {
                             <tr key = {booking.booking_id}>
                             <td>{booking.booking_id}</td>
                             <td>{order}</td>
-                            <td>{booking.booked_by.name}</td>
+                            <td>{booking.booked_by.name===" "?booking.booked_by.phone:booking.booked_by.name}</td>
                             <td>{booking.vehicle_type}</td>
                             <td>{booking_date.toLocaleString()}</td>
-                            <td><Rupee/>{booking.amount}</td>
+                            <td><Rupee/>{amount}</td>
                             <td>{booking.status===BOOKING_STATUS.NOT_ATTENDED?<span className="badge badge-danger">NOT ATTENDED</span>:<span className="badge badge-success">COMPLETED</span>}</td>
                             </tr>
                         );
