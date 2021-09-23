@@ -33,12 +33,10 @@ export default function Home() {
     const getDateBookings = (date) => {
         setAllOrders(false);
         setDatetime(date);
-        console.log(date.toISOString().split('T')[0])
         axiosInstance.post("/store-owner/new/bookings/", {
             date: date.toISOString().split('T')[0]
         })
             .then((response) => {
-                console.log(response.data)
                 setBookings(response.data)
             })
             .catch((error) => {
@@ -54,15 +52,14 @@ export default function Home() {
                 <Header heading="New Orders" />
                 <div className="d-inline-flex mb-3 justify-content-between" style={{ overflowX: "scroll", width: "100%" }}>
                 <div className={`date-item m-2 ${allOrders && 'date-active'}`} key = {1} onClick={() => getBookings()}>
-                    <h4>All</h4>
+                    <h5>All</h5>
                 </div>
                     {[2, 3, 4, 5, 6, 7, 8].map((slot, index) => {
                         var date = new Date();
                         date.setDate(date.getDate() + index);
                         return (
                             <div className={`date-item m-2 ${!allOrders && date.getDate() == datetime.getDate() && 'date-active'}`} key={index} onClick={() => getDateBookings(date)}>
-                                <h4>{date.getDate()}</h4>
-                                <h5>{monthNames[date.getMonth()]}</h5>
+                                <h5>{date.getDate()} {monthNames[date.getMonth()]}</h5>
                                 <div>{datetimeToWeekdayString(date, true)}</div>
                             </div>
                         )
@@ -86,6 +83,7 @@ export default function Home() {
                         var booking_date = new Date(booking.event.start_datetime);
                         var order = "";
                         var price_times = booking.price_times;
+                        var amount = parseInt(booking.amount);
                         {price_times && price_times.map((price_time) => {
                             order = order + price_time.service + "+";
                         })}
@@ -94,10 +92,10 @@ export default function Home() {
                             <tr key = {booking.booking_id}>
                             <td>{booking.booking_id}</td>
                             <td>{order}</td>
-                            <td>{booking.booked_by.name}</td>
+                            <td>{booking.booked_by.name===" "?booking.booked_by.phone:booking.booked_by.name}</td>
                             <td>{booking.vehicle_type}</td>
                             <td>{booking_date.toLocaleString()}</td>
-                            <td><Rupee/>{booking.amount}</td>
+                            <td><Rupee/>{amount}</td>
                             <td>{booking.status === BOOKING_STATUS.PAYMENT_DONE && 
                                 <div className="d-flex justify-content-between p-2 badge badge-secondary">
                                     Not Started
@@ -129,12 +127,16 @@ export default function Home() {
             </>
             <style jsx>{`
             .date-item {
-                min-width: 100px;
-                padding: 1.2rem 0.3rem;
+                min-width: 140px;
                 text-align: center;
-                color: grey;
+                justify-content: center;
+                color: #3570B5;
                 border: 1px solid #3570b5;
-                border-radius: 13px;
+                border-radius: 6px;
+                height: 70px;
+                display: flex;
+                flex-direction: column;
+
             }
             .date-active {
                 background: #3570b5;

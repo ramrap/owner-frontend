@@ -14,10 +14,13 @@ export default function Home() {
     const [error, setError] = React.useState(null)
 
     const getBookings = () => {
-        axiosInstance.get("/owner/booking/list")
+        const date = new Date();
+        axiosInstance.post("/store-owner/new/bookings/", {
+            date: date.toISOString().split('T')[0]
+        })
             .then((response) => {
-                console.log(response.data.results)
-                setBookings(response.data.results)
+                console.log(response.data)
+                setBookings(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -85,7 +88,7 @@ export default function Home() {
                                             <span className="text-muted">ORDER ID:</span> {booking.booking_id}
                                         </div>
                                         <div className="">
-                                            <span className="text-muted">DATE:</span> {new Date(booking.created_at).toDateString()}
+                                            <span className="text-muted">DATE:</span> {new Date(booking.event.start_datetime).toDateString()}
                                         </div>
                                         <div className="">
                                             <span className="text-muted">CUSTOMER NAME:</span> {booking.booked_by.name}
@@ -109,20 +112,19 @@ export default function Home() {
                                             <div className="">
                                                 <span className="text-muted">Grand Total:</span> <Rupee /> {booking.amount}
                                             </div>
-                                            <div className="">
-                                                <span className="text-muted">Payment Summary:</span> {booking.payment_status}
-                                            </div>
                                         </div>
                                     </div>
                                     <hr />
                                     <div className="p-2">
                                         <div className="d-flex justify-content-between p-2">
-                                            <button className="btn border bg-primary-light" disabled>
+                                        <div className="d-flex">
+                                            <button className="btn order-slot mr-3" disabled>
                                                 {datetimeToAMPM(new Date(event.start_datetime))} to {datetimeToAMPM(new Date(event.end_datetime))}
                                             </button>
-                                            <div className="btn btn-primary btn-outline">
+                                            <button className="btn btn-primary btn-outline">
                                                 View All Details
-                                            </div>
+                                            </button>
+                                        </div>
 
                                         {booking.status === BOOKING_STATUS.PAYMENT_DONE &&
                                             <div>
@@ -163,7 +165,21 @@ export default function Home() {
                 </div>
             </>
             <style jsx>{`
-                
+                .order-slot {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 8px;
+                    background: #E5F1FF;
+                    border: 1px solid #3570B5;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    color: #3871b6;
+                    font-family: DM Sans;
+                    font-style: normal;
+                    font-weight: bold;
+                }
             `}</style>
         </PrivateRoute>
     )

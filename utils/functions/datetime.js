@@ -67,3 +67,10 @@ export function datetimeDiffInMins(date1, date2){
 export const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
     ];
+
+export function dateStringToDateMonth(date) {
+    var day = date[8]+date[9];
+    var month = monthNames[parseInt(date[5]+date[6])]
+
+    return day + " " + month;
+}

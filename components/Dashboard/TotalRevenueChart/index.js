@@ -1,15 +1,16 @@
 import { Line } from 'react-chartjs-2';
+import React from "react"
 
-export default function TotalRevenueChart() {
+export default function TotalRevenueChart(props) {
     const data = {
-        labels: ['1', '2', '3', '4', '5', '6'],
+        labels: props.labels,
         datasets: [
             {
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                fill: false,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
+                label: 'Per Day Revenue',
+                data: props.revenue,
+                fill: true,
+                backgroundColor: 'white',
+                borderColor: '#3570B5',
             },
         ],
     };
