@@ -4,7 +4,7 @@ export default function Header({ heading }) {
     const { logout } = useAuth()
     return (
         <>
-            <div className="container row col-12 p-3">
+            <div className="container row col-12 px-3 pb-4">
                 <div className="d-flex justify-content-between">
                     <div>
                         <h3>{heading}</h3>

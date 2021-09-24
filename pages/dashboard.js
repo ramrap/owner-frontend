@@ -107,23 +107,23 @@ export default function Home() {
             <>
                 <Header heading="Dashboard" />
                 <div className="row no-gutters">
-                    <div className="row no-gutters col-12 col-md-12 col-lg-7">
-                        <div className="col-6 col-md-4 p-2 p-md-4">
-                            <div className="item-shadow p-2 p-md-4">
-                                <h6>New Orders</h6>
-                                <h5 className="text-primary">{newOrders}</h5>
+                    <div className="row no-gutters col-12 col-md-12 col-lg-8">
+                        <div className="col-6 col-md-4 pb-1 pb-md-1 pr-2">
+                            <div className="item-shadow py-2 p-2 p-md-4 ">
+                                <span style={{fontSize: "1rem", fontWeight: "initial"}}>New Orders</span>
+                                <h6 style={{fontSize: "1.6rem"}} className="text-primary">{newOrders}</h6>
                             </div>
                         </div>
-                        <div className="col-6 col-md-4 p-2 p-md-4">
+                        <div className="col-6 col-md-4 pb-1 pb-md-1 pr-2 pl-2">
                             <div className="item-shadow p-2 p-md-4">
-                                <h6>Completed</h6>
-                                <h5>{completedOrders}</h5>
+                                <span style={{fontSize: "1rem", fontWeight: "initial"}}>Completed</span>
+                                <h6 style={{fontSize: "1.6rem"}}>{completedOrders}</h6>
                             </div>
                         </div>
-                        <div className="col-6 col-md-4 p-2 p-md-4">
+                        <div className="col-6 col-md-4 pb-1 pb-md-1 pl-2 ">
                             <div className="item-shadow p-2 p-md-4">
-                                <h6>Cancelled</h6>
-                                <h5>{cancelledOrders}</h5>
+                                <span style={{fontSize: "1rem", fontWeight: "initial"}}>Cancelled</span>
+                                <h6 style={{fontSize: "1.6rem"}}>{cancelledOrders}</h6>
                             </div>
                         </div>
 
@@ -139,7 +139,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-md-12 col-lg-5">
+                    <div className="col-12 col-md-12 col-lg-4">
                         <div className="col-12 col-md-6 col-lg-12 mb-3">
                             <div className="item-shadow p-2 p-md-3">
                                 <h5>Vehicle Breakout</h5>

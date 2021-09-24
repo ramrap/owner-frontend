@@ -12,7 +12,7 @@ class MyDocument extends Document {
                 <Head>
                     <meta charSet="UTF-8" />
                 </Head>
-                <body>
+                <body style={{background:"#F9FCFF"}}>
                     <Main />
                     <NextScript />
                 </body>

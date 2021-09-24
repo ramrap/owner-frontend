@@ -50,7 +50,7 @@ export default function Home() {
         <PrivateRoute>
             <>
                 <Header heading="New Orders" />
-                <div className="d-inline-flex mb-3 justify-content-between" style={{ overflowX: "scroll", width: "100%" }}>
+                <div className="d-inline-flex mb-3 justify-content-between" style={{ overflowX: "scroll", width: "100%"}}>
                 <div className={`date-item m-2 ${allOrders && 'date-active'}`} key = {1} onClick={() => getBookings()}>
                     <h5>All</h5>
                 </div>
