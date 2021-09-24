@@ -32,7 +32,7 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="Past Orders" />
                 <div className="">
                 <table className = "table table-striped">
@@ -72,7 +72,7 @@ export default function Home() {
                     </tbody>
               </table>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
                 
             `}</style>

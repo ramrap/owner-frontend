@@ -48,7 +48,7 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="New Orders" />
                 <div className="d-inline-flex mb-3 justify-content-between" style={{ overflowX: "scroll", width: "100%" }}>
                 <div className={`date-item m-2 ${allOrders && 'date-active'}`} key = {1} onClick={() => getBookings()}>
@@ -124,7 +124,7 @@ export default function Home() {
                     </tbody>
               </table>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
             .date-item {
                 min-width: 140px;

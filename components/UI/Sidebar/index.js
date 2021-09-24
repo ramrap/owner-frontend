@@ -1,3 +1,4 @@
+import { useAuth } from "@context/auth/authContext"
 import Link from "next/dist/client/link"
 
 const SIDEBAR_ITEMS = [
@@ -35,8 +36,8 @@ export default function SideBar(){
                     <img src="/logo.svg" />
                 </div>
                 <div>
-                    {SIDEBAR_ITEMS.map((item) => 
-                        <Link href={item.path}>
+                    {SIDEBAR_ITEMS && SIDEBAR_ITEMS.map((item) => 
+                        <Link href={item.path} key={item.key}>
                             <a className="">
                                 <div className="py-2 py-md-3 pl-2 pl-md-5">
                                     {item.title}
@@ -46,9 +47,6 @@ export default function SideBar(){
                     )}
                 </div>
             </div>
-            <style jsx>{`
-
-            `}</style>
         </>
         
     )

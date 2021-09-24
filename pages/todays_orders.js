@@ -74,7 +74,7 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="Today's Orders" />
                 <div className="row no-gutters">
                     {bookings && bookings.map((booking) => {
@@ -163,7 +163,7 @@ export default function Home() {
                         )
                     })}
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
                 .order-slot {
                     display: flex;

@@ -6,22 +6,15 @@ export default function Layout({ children }) {
     return (
         <>
             <div className="p-3">
-                {accessToken ?
-                    <div className="row no-gutters">
-                        <div className="col-3 p-2">
-                            <SideBar />
-                        </div>
-                        <div className="col-9 p-2">
-                            {children}
-                        </div>
+                <div className="row no-gutters">
+                    <div className="col-3 p-2">
+                        <SideBar />
                     </div>
-                    :
-                    children
-                }
+                    <div className="col-9 p-2">
+                        {children}
+                    </div>
+                </div>
             </div>
-            <style jsx>{`
-
-            `}</style>
         </>
     )
 }

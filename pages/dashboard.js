@@ -103,8 +103,9 @@ export default function Home() {
 
 
     return (
+        
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="Dashboard" />
                 <div className="row no-gutters">
                     <div className="row no-gutters col-12 col-md-12 col-lg-7">
@@ -169,10 +170,8 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </>
-            <style jsx>{`
-                
-            `}</style>
+            </Layout>
         </PrivateRoute>
+        
     );
 }

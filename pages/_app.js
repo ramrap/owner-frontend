@@ -19,19 +19,10 @@ function MyApp({ Component, pageProps, router }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <SessionProvider>
-                <AuthProvider>
-                
-                    <Layout>
-                        
-                            <Component {...pageProps} key={router.route} />
-
-                    </Layout>
-                    
+                <AuthProvider>             
+                    <Component {...pageProps} key={router.route} />
                 </AuthProvider>
             </SessionProvider>
-            <style jsx global>{`
-
-            `}</style>
         </>
     );
 }
