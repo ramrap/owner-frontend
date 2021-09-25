@@ -1,5 +1,7 @@
+import { useAuth } from "@context/auth/authContext"
 import Link from "next/dist/client/link"
 import React from "react"
+import { useRouter } from 'next/router'
 
 const SIDEBAR_ITEMS = [
     {
@@ -29,7 +31,7 @@ const SIDEBAR_ITEMS = [
 ]
 
 export default function SideBar(){
-    const [active, setActive] = React.useState("dashboard")
+    const router = useRouter()
     return (
         <>
             <div className="item-shadow h-100">
@@ -37,12 +39,12 @@ export default function SideBar(){
                     <img src="/logo.svg" height="40px" width="92px"/>
                 </div>
                 <div>
-                    {SIDEBAR_ITEMS.map((item) => 
+                    {SIDEBAR_ITEMS && SIDEBAR_ITEMS.map((item) =>
                         <Link href={item.path} key={item.key}>
 
                             <a >
-                            <div className={`${active==item.key && 'active-tab-div'}`}></div>
-                                <div className={`py-2 py-md-3 pl-2 pl-md-4 ${active==item.key && 'active-tab'}`} onClick={() => setActive(item.key)}>
+                            <div className={`${router.pathname===item.path && 'active-tab-div'}`}></div>
+                                <div className={`py-2 py-md-3 pl-2 pl-md-4 ${router.pathname===item.path && 'active-tab'}`}>
                                 <img src={item.icon} className="mr-1"/>
                                     {item.title}
                                 </div>

@@ -32,11 +32,11 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="Past Orders" />
-                <div className="">
-                <table className = "table table-striped">
-                    <thead>
+                <div className="past-orders-container">
+                <table className = "table table-striped borderless">
+                    <thead className="table-head-text">
                     <tr>
                         <th>Order Number</th>
                         <th>Order</th>
@@ -47,7 +47,7 @@ export default function Home() {
                         <th>Status</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-primary">
                     {bookings && bookings.map((booking) => {
                         var booking_date = new Date(booking.event.start_datetime);
                         var order = "";
@@ -64,17 +64,60 @@ export default function Home() {
                             <td>{booking.booked_by.name===" "?booking.booked_by.phone:booking.booked_by.name}</td>
                             <td>{booking.vehicle_type}</td>
                             <td>{booking_date.toLocaleString()}</td>
-                            <td><Rupee/>{amount}</td>
-                            <td>{booking.status===BOOKING_STATUS.NOT_ATTENDED?<span className="badge badge-danger">NOT ATTENDED</span>:<span className="badge badge-success">COMPLETED</span>}</td>
+                            <td className="font-weight-bold"><Rupee/>{amount}</td>
+                            <td>{booking.status===BOOKING_STATUS.NOT_ATTENDED?<span className="badge p-2 badge-danger">NOT ATTENDED</span>:<span className="badge p-2 badge-success">COMPLETED</span>}</td>
                             </tr>
                         );
                     })}
                     </tbody>
               </table>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
-                
+            .past-orders-container {
+                background:white;
+                background: #FFFFFF;
+                box-shadow: -8px 8px 32px rgba(136, 136, 136, 0.16);
+                border-radius: 8px;
+            }
+            .table-striped > tbody > tr:nth-child(2n+1) > td {
+                background-color: #f7f9fa;
+             }
+             .table-head-text {
+                font-family: DM Sans;
+                font-style: normal;
+                font-weight: 400 !important;
+                font-size: 0.8rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #696969;
+             }
+
+            .table thead th {
+                vertical-align: top;
+            }
+            .badge-secondary {
+                background: #ffedba;
+                color: #7a5a00;
+                border 1px solid #b8a263;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+
+            }
+            .badge-success {
+                background: #D6FFE1;
+                color: #2A8D46;
+                border 1px solid #2A8D46;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
+            .badge-danger {
+                background: #FFD6D6;
+                color: #8D2A2A;
+                border: 1px solid #8D2A2A;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
             `}</style>
         </PrivateRoute>
     )

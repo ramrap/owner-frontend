@@ -48,7 +48,7 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="New Orders" />
                 <div className="d-inline-flex mb-3 justify-content-between" style={{ overflowX: "scroll", width: "100%"}}>
                 <div className={`date-item m-2 ${allOrders && 'date-active'}`} key = {1} onClick={() => getBookings()}>
@@ -65,12 +65,12 @@ export default function Home() {
                         )
                     })}
                 </div>
-                <div className="">
-                <table className = "table table-striped">
-                    <thead>
+                <div className="new-orders-container p-3">
+                <table className = "table table-striped borderless">
+                    <thead className="table-head-text">
                     <tr>
-                        <th>Order Number</th>
-                        <th>Order</th>
+                        <th >Order Number</th>
+                        <th>Order Details</th>
                         <th>Customer</th>
                         <th>Vehicle Type</th>
                         <th>Date</th>
@@ -78,7 +78,7 @@ export default function Home() {
                         <th>Status</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-primary">
                     {bookings && bookings.map((booking) => {
                         var booking_date = new Date(booking.event.start_datetime);
                         var order = "";
@@ -95,7 +95,7 @@ export default function Home() {
                             <td>{booking.booked_by.name===" "?booking.booked_by.phone:booking.booked_by.name}</td>
                             <td>{booking.vehicle_type}</td>
                             <td>{booking_date.toLocaleString()}</td>
-                            <td><Rupee/>{amount}</td>
+                            <td className="font-weight-bold"><Rupee/>{amount}</td>
                             <td>{booking.status === BOOKING_STATUS.PAYMENT_DONE && 
                                 <div className="d-flex justify-content-between p-2 badge badge-secondary">
                                     Not Started
@@ -110,12 +110,12 @@ export default function Home() {
                             }
                             {booking.status === BOOKING_STATUS.SERVICE_CONMPLETED && 
                                 <div className="d-flex justify-content-between p-2 badge badge-success">
-                                    Service Completed
+                                    Completed
                                 </div>
                             }
                             {booking.status === BOOKING_STATUS.NOT_ATTENDED &&
-                                <div className="d-flex justify-content-between p-2 badge badge-warning">
-                                    Service Expired
+                                <div className="d-flex justify-content-between p-2 badge badge-danger">
+                                    Cancelled
                                 </div>
                             }</td>
                             </tr>
@@ -124,7 +124,7 @@ export default function Home() {
                     </tbody>
               </table>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
             .date-item {
                 min-width: 140px;
@@ -141,6 +141,50 @@ export default function Home() {
             .date-active {
                 background: #3570b5;
                 color: white;
+            }
+            .new-orders-container {
+                background:white;
+                background: #FFFFFF;
+                box-shadow: -8px 8px 32px rgba(136, 136, 136, 0.16);
+                border-radius: 8px;
+            }
+            .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+                background-color: #f7f9fa;
+             }
+             .table-head-text {
+                font-family: DM Sans;
+                font-style: normal;
+                font-weight: 400 !important;
+                font-size: 0.8rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #696969;
+             }
+
+            .table thead th {
+                vertical-align: top;
+            }
+            .badge-secondary {
+                background: #ffedba;
+                color: #7a5a00;
+                border 1px solid #b8a263;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+
+            }
+            .badge-success {
+                background: #D6FFE1;
+                color: #2A8D46;
+                border 1px solid #2A8D46;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
+            .badge-danger {
+                background: #FFD6D6;
+                color: #8D2A2A;
+                border: 1px solid #8D2A2A;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
             }
             `}</style>
         </PrivateRoute>

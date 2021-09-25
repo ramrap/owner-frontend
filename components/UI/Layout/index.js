@@ -1,12 +1,10 @@
-import { useAuth } from "@context/auth/authContext";
+
 import SideBar from "../Sidebar";
 
 export default function Layout({ children }) {
-    const { accessToken } = useAuth()
     return (
         <>
             <div className="">
-                {accessToken ?
                     <div className="row no-gutters">
                         <div className="col-3 p-4 min-vh-100 position-sticky top-0">
                             <SideBar />
@@ -15,13 +13,7 @@ export default function Layout({ children }) {
                             {children}
                         </div>
                     </div>
-                    :
-                    children
-                }
-            </div>
-            <style jsx>{`
-
-            `}</style>
+                </div>
         </>
     )
 }
