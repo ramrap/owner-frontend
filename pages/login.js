@@ -31,10 +31,10 @@ export default function Login() {
                     <h4 className="text-primary mb-4">Owner Login</h4>
                     <form onSubmit={handleLogin}>
                         <div className="form-group">
-                            <Input label="Email Address" value={email} onChange={setEmail} type="email" required />
+                            <Input label="Email Address" value={email} onChange={setEmail} type="email" name="email" required />
                         </div>
                         <div className="form-group">
-                            <Input label="Password" value={password} onChange={setPassword} type="password" required />
+                            <Input label="Password" value={password} onChange={setPassword} type="password" name="password" required />
                         </div>
                         <div className="form-group">
                             {loginError && <div className="alert alert-danger">{loginError}</div>}

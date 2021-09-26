@@ -130,7 +130,7 @@ export default function Home() {
                                             <div>
                                                 {error && error[booking.booking_id] && <div className="text-danger">{error[booking.booking_id]}</div>}
                                                 <div className="d-flex">
-                                                    <input value={otps[booking.booking_id]} onChange={(event) => setOtps({...otps, [booking.booking_id]: event.target.value})} className="form-control w-auto mr-2" type="text" placeholder="Enter OTP"/>
+                                                    <input name="booking-otp" value={otps[booking.booking_id]} onChange={(event) => setOtps({...otps, [booking.booking_id]: event.target.value})} className="form-control w-auto mr-2" type="text" placeholder="Enter OTP"/>
                                                     <button className="btn btn-primary font-dmSans spaced-font font-08" onClick={() => startBooking(booking.booking_id)}>Start Service</button>
                                                 </div>
                                             </div>
