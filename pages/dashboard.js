@@ -109,26 +109,26 @@ export default function Home() {
                 <Header heading="Dashboard" />
                 <div className="row no-gutters">
                     <div className="row no-gutters col-12 col-md-12 col-lg-8">
-                        <div className="col-6 col-md-4 pb-1 pb-md-1 pr-2">
-                            <div className="item-shadow py-2 p-2 p-md-4 new-order-box">
-                                <span style={{fontSize: "1rem", fontWeight: "initial"}}>New Orders</span>
-                                <h6 className="new-orders">{newOrders}</h6>
+                        <div className="col-6 col-md-4">
+                            <div className="item-shadow m-2 p-2 p-md-4 new-order-box">
+                                <span className="sh-font-prop">New Orders</span>
+                                <h6 className="new-orders font-16">{newOrders}</h6>
                             </div>
                         </div>
-                        <div className="col-6 col-md-4 pb-1 pb-md-1 pr-2 pl-2">
-                            <div className="item-shadow p-2 p-md-4">
-                                <span style={{fontSize: "1rem", fontWeight: "initial"}}>Completed</span>
-                                <h6 className="text-primary completed-orders">{completedOrders}</h6>
+                        <div className="col-6 col-md-4">
+                            <div className="item-shadow m-2 p-2 p-md-4">
+                                <span className="sh-font-prop">Completed</span>
+                                <h6 className="text-primary completed-orders font-16">{completedOrders}</h6>
                             </div>
                         </div>
-                        <div className="col-6 col-md-4 pb-1 pb-md-1 pl-2 ">
-                            <div className="item-shadow p-2 p-md-4">
-                                <span style={{fontSize: "1rem", fontWeight: "initial"}}>Cancelled</span>
-                                <h6 className="cancelled-orders">{cancelledOrders}</h6>
+                        <div className="col-6 col-md-4">
+                            <div className="item-shadow my-2 ml-2 p-2 p-md-4">
+                                <span className="sh-font-prop">Cancelled</span>
+                                <h6 className="cancelled-orders text-danger font-16">{cancelledOrders}</h6>
                             </div>
                         </div>
 
-                        <div className="col-12">
+                        <div className="col-12 m-2">
                             <div className="item-shadow p-2 p-md-3">
                                 <h5>Total Revenue</h5>
                                 <div>
@@ -141,7 +141,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="col-12 col-md-12 col-lg-4">
-                        <div className="col-12 col-md-6 col-lg-12 mb-3">
+                        <div className="col-12 col-md-6 col-lg-12 m-2">
                             <div className="item-shadow p-2 p-md-3">
                                 <h5>Vehicle Breakout</h5>
                                 <div style={{ maxWidth: "300px", margin: 'auto' }}>
@@ -149,7 +149,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-12 col-md-6 col-lg-12">
+                        <div className="col-12 col-md-6 col-lg-12 m-2">
                             <div className="item-shadow">
                                 <h5 className="p-2 p-md-3">Top selling services</h5>
                                 <div className="p-2 p-md-3 border-top">
@@ -172,23 +172,15 @@ export default function Home() {
                 </div>
             </Layout>
             <style jsx>{`
-            .new-orders {
-                font-size: 1.6rem;
-            }
-            .cancelled-orders {
-                font-size: 1.6rem;
-                color: #B53535;
-
-            }
-            .completed-orders {
-                font-size: 1.6rem;
-            }
             .new-order-box {
                 background: linear-gradient(283.9deg, #3570B5 -6.83%, #8FC2FF 160.14%);
                 box-shadow: -8px 8px 32px rgba(136, 136, 136, 0.16);
                 border-radius: 8px;
                 color: white;
             }
+            .sh-font-prop {
+                font-size: 1rem;
+                font-weight: "initial";
             `}</style>
         </PrivateRoute>
 

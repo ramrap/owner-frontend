@@ -72,3 +72,21 @@ hr {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.font-dmSans {
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.spaced-font {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.flex-row-center-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
