@@ -90,3 +90,34 @@ hr {
     justify-content: center;
     align-items: center;
 }
+
+.badge-secondary {
+    background: #ffedba;
+    color: #7a5a00;
+    border: 1px solid #b8a263;
+}
+.badge-success {
+    background: #D6FFE1;
+    color: #2A8D46;
+    border: 1px solid #2A8D46;
+}
+.badge-danger {
+    background: #FFD6D6;
+    color: #8D2A2A;
+    border: 1px solid #8D2A2A;
+}
+.orders-container {
+    border-radius: 8px;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #f7f9fa;
+ }
+ .table-head-text {
+    font-weight: 400 !important;
+    color: #696969;
+ }
+
+.table thead th {
+    vertical-align: top;
+}

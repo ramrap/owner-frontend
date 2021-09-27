@@ -64,7 +64,7 @@ export default function Home() {
                         )
                     })}
                 </div>
-                <div className="new-orders-container bg-white item-shadow p-3">
+                <div className="orders-container bg-white item-shadow p-3">
                 <table className = "table table-striped borderless">
                     <thead className="font-dmSans spaced-font font-08 table-head-text">
                     <tr>
@@ -140,35 +140,6 @@ export default function Home() {
             .date-active {
                 background: #3570b5;
                 color: white;
-            }
-            .new-orders-container {
-                border-radius: 8px;
-            }
-            .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-                background-color: #f7f9fa;
-             }
-             .table-head-text {
-                color: #696969;
-             }
-
-            .table thead th {
-                vertical-align: top;
-            }
-            .badge-secondary {
-                background: #ffedba;
-                color: #7a5a00;
-                border 1px solid #b8a263;
-
-            }
-            .badge-success {
-                background: #D6FFE1;
-                color: #2A8D46;
-                border 1px solid #2A8D46;
-            }
-            .badge-danger {
-                background: #FFD6D6;
-                color: #8D2A2A;
-                border: 1px solid #8D2A2A;
             }
             `}</style>
         </PrivateRoute>

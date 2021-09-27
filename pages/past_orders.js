@@ -34,7 +34,7 @@ export default function Home() {
         <PrivateRoute>
             <Layout>
                 <Header heading="Past Orders" />
-                <div className="past-orders-container bg-white item-shadow">
+                <div className="orders-container bg-white item-shadow">
                 <table className = "table table-striped borderless">
                     <thead className="spaced-font font-dmSans font-08 table-head-text">
                     <tr>
@@ -74,36 +74,6 @@ export default function Home() {
                 </div>
             </Layout>
             <style jsx>{`
-            .past-orders-container {
-                border-radius: 8px;
-            }
-            .table-striped > tbody > tr:nth-child(2n+1) > td {
-                background-color: #f7f9fa;
-             }
-             .table-head-text {
-                font-weight: 400 !important;
-                color: #696969;
-             }
-
-            .table thead th {
-                vertical-align: top;
-            }
-            .badge-secondary {
-                background: #ffedba;
-                color: #7a5a00;
-                border 1px solid #b8a263;
-
-            }
-            .badge-success {
-                background: #D6FFE1;
-                color: #2A8D46;
-                border 1px solid #2A8D46;
-            }
-            .badge-danger {
-                background: #FFD6D6;
-                color: #8D2A2A;
-                border: 1px solid #8D2A2A;
-            }
             `}</style>
         </PrivateRoute>
     )

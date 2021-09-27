@@ -63,8 +63,6 @@ export default function Home() {
                     tempDayRevenues.push(parseInt(data[rev]));
                 }
             }
-            tempDayRevenues.reverse();
-            tempLabels.reverse();
             setDayRevenues(tempDayRevenues);
             setRevenueLabels(tempLabels);
 
@@ -122,7 +120,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="col-6 col-md-4">
-                            <div className="item-shadow my-2 ml-2 p-2 p-md-4">
+                            <div className="item-shadow m-2 p-2 p-md-4">
                                 <span className="sh-font-prop">Cancelled</span>
                                 <h6 className="cancelled-orders text-danger font-16">{cancelledOrders}</h6>
                             </div>
