@@ -66,7 +66,7 @@ export default function Home() {
                 </div>
                 <div className="orders-container bg-white item-shadow p-3">
                 <table className = "table table-striped borderless">
-                    <thead className="font-dmSans spaced-font font-08 table-head-text">
+                    <thead className=" spaced-font font-08 table-head-text">
                     <tr>
                         <th >Order Number</th>
                         <th>Order Details</th>

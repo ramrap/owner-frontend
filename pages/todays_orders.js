@@ -100,17 +100,17 @@ export default function Home() {
                                     <hr />
                                     <div className="p-2 font-weight-bold">
                                         <div className="mb-2">
-                                            <span className="booking-details-subhead font-dmSans font-09">Order Details:</span> {booking.price_times.map((price_time, index) => <span className="font-weight-bold" key={price_time.id}>{index != 0 && ','} {price_time.service} </span>)}
+                                            <span className="booking-details-subhead font-09">Order Details:</span> {booking.price_times.map((price_time, index) => <span className="font-weight-bold" key={price_time.id}>{index != 0 && ','} {price_time.service} </span>)}
                                         </div>
                                         <div className="mb-2">
-                                            <span className="booking-details-subhead font-dmSans font-09">Total Time:</span> {datetimeDiffInMins(new Date(event.start_datetime), new Date(event.end_datetime))}min
+                                            <span className="booking-details-subhead font-09">Total Time:</span> {datetimeDiffInMins(new Date(event.start_datetime), new Date(event.end_datetime))}min
                                         </div>
                                         <div className="mb-2">
-                                            <span className="booking-details-subhead font-dmSans font-09">Vehicle Type:</span> {booking.vehicle_type}
+                                            <span className="booking-details-subhead font-09">Vehicle Type:</span> {booking.vehicle_type}
                                         </div>
                                         <div className="d-flex justify-content-between">
                                             <div className="">
-                                                <span className="booking-details-subhead font-dmSans font-09">Grand Total:</span> <Rupee /> {booking.amount}
+                                                <span className="booking-details-subhead font-09">Grand Total:</span> <Rupee /> {booking.amount}
                                             </div>
                                         </div>
                                     </div>
@@ -118,10 +118,10 @@ export default function Home() {
                                     <div className="p-2">
                                         <div className="d-flex justify-content-between p-1">
                                         <div className="d-flex">
-                                            <div className="order-slot mr-3 px-2 flex-row-center-center font-dmSans font-weight-bold" disabled>
+                                            <div className="order-slot mr-3 px-2 flex-row-center-center font-weight-bold" disabled>
                                                 {datetimeToAMPM(new Date(event.start_datetime))} to {datetimeToAMPM(new Date(event.end_datetime))}
                                             </div>
-                                            <button className="btn btn-primary btn-outline font-dmSans font-09 all-details-btn py-1 px-2">
+                                            <button className="btn btn-primary btn-outline font-09 all-details-btn py-1 px-2">
                                                 View All Details
                                             </button>
                                         </div>
@@ -131,13 +131,13 @@ export default function Home() {
                                                 {error && error[booking.booking_id] && <div className="text-danger">{error[booking.booking_id]}</div>}
                                                 <div className="d-flex">
                                                     <input name="booking-otp" value={otps[booking.booking_id]} onChange={(event) => setOtps({...otps, [booking.booking_id]: event.target.value})} className="form-control w-auto mr-2" type="text" placeholder="Enter OTP"/>
-                                                    <button className="btn btn-primary font-dmSans spaced-font font-08" onClick={() => startBooking(booking.booking_id)}>Start Service</button>
+                                                    <button className="btn btn-primary spaced-font font-08" onClick={() => startBooking(booking.booking_id)}>Start Service</button>
                                                 </div>
                                             </div>
                                         }
                                         {booking.status === BOOKING_STATUS.SERVICE_STARTED &&
                                             <div className="d-flex justify-content-between p-2">
-                                                <div className="p-2 mr-2 ongoing-box flex-row-center-center font-dmSans font-weight-bold spaced-font">
+                                                <div className="p-2 mr-2 ongoing-box flex-row-center-center font-weight-bold spaced-font">
                                                     ONGOING
                                                 </div>
                                                 <button className="btn btn-success" onClick={() => completeBooking(booking.booking_id)}>

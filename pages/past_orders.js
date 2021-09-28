@@ -36,7 +36,7 @@ export default function Home() {
                 <Header heading="Past Orders" />
                 <div className="orders-container bg-white item-shadow">
                 <table className = "table table-striped borderless">
-                    <thead className="spaced-font font-dmSans font-08 table-head-text">
+                    <thead className="spaced-font font-08 table-head-text">
                     <tr>
                         <th>Order Number</th>
                         <th>Order</th>
