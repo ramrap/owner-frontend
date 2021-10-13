@@ -6,7 +6,7 @@ export default function TotalRevenueChart(props) {
         labels: props.labels,
         datasets: [
             {
-                label: 'Per Day Revenue',
+                label: 'Total Revenue till date.',
                 data: props.revenue,
                 fill: true,
                 backgroundColor: 'white',

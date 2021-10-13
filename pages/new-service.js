@@ -1,8 +1,11 @@
+import PrivateRoute from "@components/PrivateRoute";
+import Layout from "@components/UI/Layout";
 
 
 export default function AddServices() {
     return (
-        <>
+        <PrivateRoute>
+        <Layout>
             <div className="bg-primary-light p-3">
                 <div className="container">
                     <div className="d-flex justify-content-between">
@@ -61,7 +64,7 @@ export default function AddServices() {
                             <div className="item-shadow p-3">
                                 <div className="form-group d-flex">
                                     <div className="mx-2">
-                                        <input type="checkbox" className="m-2" />
+                                        <input type="checkbox" className="m-2"/>
                                         <label className="form-control-label">Description</label>
                                     </div>
                                     <div className="mx-2">
@@ -137,6 +140,7 @@ export default function AddServices() {
                     flex-direction: column;
                 }
             `}</style>
-        </>
+        </Layout>
+        </PrivateRoute>
     )
 }

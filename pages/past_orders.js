@@ -32,11 +32,11 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="Past Orders" />
-                <div className="">
-                <table className = "table table-striped">
-                    <thead>
+                <div className="orders-container bg-white item-shadow">
+                <table className = "table table-striped borderless">
+                    <thead className="spaced-font font-08 table-head-text">
                     <tr>
                         <th>Order Number</th>
                         <th>Order</th>
@@ -47,7 +47,7 @@ export default function Home() {
                         <th>Status</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-primary">
                     {bookings && bookings.map((booking) => {
                         var booking_date = new Date(booking.event.start_datetime);
                         var order = "";
@@ -64,17 +64,16 @@ export default function Home() {
                             <td>{booking.booked_by.name===" "?booking.booked_by.phone:booking.booked_by.name}</td>
                             <td>{booking.vehicle_type}</td>
                             <td>{booking_date.toLocaleString()}</td>
-                            <td><Rupee/>{amount}</td>
-                            <td>{booking.status===BOOKING_STATUS.NOT_ATTENDED?<span className="badge badge-danger">NOT ATTENDED</span>:<span className="badge badge-success">COMPLETED</span>}</td>
+                            <td className="font-weight-bold"><Rupee/>{amount}</td>
+                            <td>{booking.status===BOOKING_STATUS.NOT_ATTENDED?<span className="badge p-2 badge-danger spaced-font">NOT ATTENDED</span>:<span className="badge p-2 badge-success spaced-font">COMPLETED</span>}</td>
                             </tr>
                         );
                     })}
                     </tbody>
               </table>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
-                
             `}</style>
         </PrivateRoute>
     )

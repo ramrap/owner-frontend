@@ -1,12 +1,11 @@
 import Layout from "@components/UI/Layout";
 import axiosInstance from "@utils/axios";
-import { datetimeToAMPM, datetimeToDateString, datetimeToWeekdayString, monthNames} from "@utils/functions/datetime";
+import { datetimeToWeekdayString, monthNames } from "@utils/functions/datetime";
 import React from "react";
 import Rupee from "@utils/symbols/rupee";
 import PrivateRoute from "@components/PrivateRoute";
 import Header from "@components/UI/Header";
 import { BOOKING_STATUS } from "@utils/constants/booking";
-import axios from "axios";
 
 export default function Home() {
     const [bookings, setBookings] = React.useState();
@@ -48,9 +47,9 @@ export default function Home() {
 
     return (
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="New Orders" />
-                <div className="d-inline-flex mb-3 justify-content-between" style={{ overflowX: "scroll", width: "100%" }}>
+                <div className="d-inline-flex mb-3 justify-content-between" style={{overflowX: "scroll", width: "100%"}}>
                 <div className={`date-item m-2 ${allOrders && 'date-active'}`} key = {1} onClick={() => getBookings()}>
                     <h5>All</h5>
                 </div>
@@ -65,12 +64,12 @@ export default function Home() {
                         )
                     })}
                 </div>
-                <div className="">
-                <table className = "table table-striped">
-                    <thead>
+                <div className="orders-container bg-white item-shadow p-3">
+                <table className = "table table-striped borderless">
+                    <thead className=" spaced-font font-08 table-head-text">
                     <tr>
-                        <th>Order Number</th>
-                        <th>Order</th>
+                        <th >Order Number</th>
+                        <th>Order Details</th>
                         <th>Customer</th>
                         <th>Vehicle Type</th>
                         <th>Date</th>
@@ -78,7 +77,7 @@ export default function Home() {
                         <th>Status</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-primary">
                     {bookings && bookings.map((booking) => {
                         var booking_date = new Date(booking.event.start_datetime);
                         var order = "";
@@ -95,27 +94,27 @@ export default function Home() {
                             <td>{booking.booked_by.name===" "?booking.booked_by.phone:booking.booked_by.name}</td>
                             <td>{booking.vehicle_type}</td>
                             <td>{booking_date.toLocaleString()}</td>
-                            <td><Rupee/>{amount}</td>
+                            <td className="font-weight-bold"><Rupee/>{amount}</td>
                             <td>{booking.status === BOOKING_STATUS.PAYMENT_DONE && 
-                                <div className="d-flex justify-content-between p-2 badge badge-secondary">
+                                <div className="d-flex justify-content-between p-2 badge badge-secondary spaced-font">
                                     Not Started
                                 </div>
                             }
                             {booking.status === BOOKING_STATUS.SERVICE_STARTED &&
-                                <div className="d-flex justify-content-between p-2 badge badge-primary">
+                                <div className="d-flex justify-content-between p-2 badge badge-primary spaced-font">
                                     <div className="btn border">
                                         Ongoing
                                     </div>
                                 </div>
                             }
                             {booking.status === BOOKING_STATUS.SERVICE_CONMPLETED && 
-                                <div className="d-flex justify-content-between p-2 badge badge-success">
-                                    Service Completed
+                                <div className="d-flex justify-content-between p-2 badge badge-success spaced-font">
+                                    Completed
                                 </div>
                             }
                             {booking.status === BOOKING_STATUS.NOT_ATTENDED &&
-                                <div className="d-flex justify-content-between p-2 badge badge-warning">
-                                    Service Expired
+                                <div className="d-flex justify-content-between p-2 badge badge-danger spaced-font">
+                                    Cancelled
                                 </div>
                             }</td>
                             </tr>
@@ -124,16 +123,16 @@ export default function Home() {
                     </tbody>
               </table>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
             .date-item {
-                min-width: 140px;
+                min-width: 10.5rem;
                 text-align: center;
                 justify-content: center;
                 color: #3570B5;
                 border: 1px solid #3570b5;
                 border-radius: 6px;
-                height: 70px;
+                height: 4.5rem;
                 display: flex;
                 flex-direction: column;
 

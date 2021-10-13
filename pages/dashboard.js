@@ -63,8 +63,6 @@ export default function Home() {
                     tempDayRevenues.push(parseInt(data[rev]));
                 }
             }
-            tempDayRevenues.reverse();
-            tempLabels.reverse();
             setDayRevenues(tempDayRevenues);
             setRevenueLabels(tempLabels);
 
@@ -103,31 +101,32 @@ export default function Home() {
 
 
     return (
+        
         <PrivateRoute>
-            <>
+            <Layout>
                 <Header heading="Dashboard" />
                 <div className="row no-gutters">
-                    <div className="row no-gutters col-12 col-md-12 col-lg-7">
-                        <div className="col-6 col-md-4 p-2 p-md-4">
-                            <div className="item-shadow p-2 p-md-4">
-                                <h6>New Orders</h6>
-                                <h5 className="text-primary">{newOrders}</h5>
+                    <div className="row no-gutters col-12 col-md-12 col-lg-8">
+                        <div className="col-6 col-md-4">
+                            <div className="item-shadow m-2 p-2 p-md-4 new-order-box">
+                                <span className="sh-font-prop">New Orders</span>
+                                <h6 className="new-orders font-16">{newOrders}</h6>
                             </div>
                         </div>
-                        <div className="col-6 col-md-4 p-2 p-md-4">
-                            <div className="item-shadow p-2 p-md-4">
-                                <h6>Completed</h6>
-                                <h5>{completedOrders}</h5>
+                        <div className="col-6 col-md-4">
+                            <div className="item-shadow m-2 p-2 p-md-4">
+                                <span className="sh-font-prop">Completed</span>
+                                <h6 className="text-primary completed-orders font-16">{completedOrders}</h6>
                             </div>
                         </div>
-                        <div className="col-6 col-md-4 p-2 p-md-4">
-                            <div className="item-shadow p-2 p-md-4">
-                                <h6>Cancelled</h6>
-                                <h5>{cancelledOrders}</h5>
+                        <div className="col-6 col-md-4">
+                            <div className="item-shadow m-2 p-2 p-md-4">
+                                <span className="sh-font-prop">Cancelled</span>
+                                <h6 className="cancelled-orders text-danger font-16">{cancelledOrders}</h6>
                             </div>
                         </div>
 
-                        <div className="col-12">
+                        <div className="col-12 m-2">
                             <div className="item-shadow p-2 p-md-3">
                                 <h5>Total Revenue</h5>
                                 <div>
@@ -139,8 +138,8 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-md-12 col-lg-5">
-                        <div className="col-12 col-md-6 col-lg-12 mb-3">
+                    <div className="col-12 col-md-12 col-lg-4">
+                        <div className="col-12 col-md-6 col-lg-12 m-2">
                             <div className="item-shadow p-2 p-md-3">
                                 <h5>Vehicle Breakout</h5>
                                 <div style={{ maxWidth: "300px", margin: 'auto' }}>
@@ -148,7 +147,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-12 col-md-6 col-lg-12">
+                        <div className="col-12 col-md-6 col-lg-12 m-2">
                             <div className="item-shadow">
                                 <h5 className="p-2 p-md-3">Top selling services</h5>
                                 <div className="p-2 p-md-3 border-top">
@@ -169,10 +168,20 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </>
+            </Layout>
             <style jsx>{`
-                
+            .new-order-box {
+                background: linear-gradient(283.9deg, #3570B5 -6.83%, #8FC2FF 160.14%);
+                box-shadow: -8px 8px 32px rgba(136, 136, 136, 0.16);
+                border-radius: 8px;
+                color: white;
+            }
+            .sh-font-prop {
+                font-size: 1rem;
+                font-weight: "initial";
             `}</style>
         </PrivateRoute>
+
+        
     );
 }
