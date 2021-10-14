@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@styles/global.css";
 import "@styles/custom.css";
 
+
 import "@styles/flickity.css";
 
 import { PageTransition } from "next-page-transitions";
